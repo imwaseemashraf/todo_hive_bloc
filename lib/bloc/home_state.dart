@@ -12,3 +12,13 @@ class HomeInitial extends HomeState {
   @override
   List<Object> get props => [success!];
 }
+
+class SuccessfulLoginState extends HomeState {
+  final String username;
+
+  const SuccessfulLoginState(this.username);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [username];
+}

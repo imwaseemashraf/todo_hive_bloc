@@ -10,6 +10,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final Authentication authentication;
 
   HomeBloc(this.authentication) : super(HomeInitial()) {
-    on<LoginEvent>((event, emit) async {});
+    on<LoginEvent>((event, emit) async {
+      final user = await authentication.authenticateUser(
+        event.username,
+        event.password,
+      );
+      if (user != null) {
+        emit(SuccessfulLoginState(user));
+      }
+    });
   }
 }
